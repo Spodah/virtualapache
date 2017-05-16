@@ -30,9 +30,11 @@ class apache {
 	}
 	file{'/home/juuso/example':
 		ensure =>directory,
+		owner =>juuso,
 	}
 	file{'/home/juuso/example/index.html':
 		content =>template('apache/index.html.erb'),
+		owner =>juuso,
 	}
 	service{'apache2':
 		ensure =>true,
