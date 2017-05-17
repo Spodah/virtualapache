@@ -68,5 +68,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y puppet
   SHELL
-  config.vm.provision "puppet"
+  config.vm.provision "puppet" do |puppet|
+    puppet.module_path ="/home/kubuntu/virtualapache"
+  end
 end

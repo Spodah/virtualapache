@@ -1,5 +1,5 @@
 class vagrant {
-	package{'virtualbox-5.1':
+	package{'virtualbox-5.0':
 		ensure =>installed,
 		allowcdrom =>true
 	}
@@ -11,17 +11,17 @@ class vagrant {
 		ensure =>installed,
 		allowcdrom =>true
 	}
-	file{'/home/juuso/Vagrantfile':
+	file{'/home/kubuntu/Vagrantfile':
 		content =>template('vagrant/Vagrantfile.erb'),
-		owner =>juuso,
+		owner =>kubuntu,
 	}
-	file{'/home/juuso/manifests':
+	file{'/home/kubuntu/manifests':
 		ensure =>directory,
-		owner =>juuso,
+		owner =>kubuntu,
 	}
-	file{'/home/juuso/manifests/default.pp':
+	file{'/home/kubuntu/manifests/default.pp':
 		content =>template('vagrant/default.pp.erb'),
-		owner =>juuso,
+		owner =>kubuntu,
 	}
 	file{'/etc/apt/sources.list':
 		content =>template('vagrant/sources.list.erb'),
@@ -29,6 +29,6 @@ class vagrant {
 	}
 	exec{"bash /home/kubuntu/virtualapache/vbox.sh":
 		path => "/bin/:/usr/bin/:/sbin/:/usr/sbin/",
-		notify =>Package['virtualbox-5.1'],
+		notify =>Package['virtualbox-5.0'],
 	}
 }
