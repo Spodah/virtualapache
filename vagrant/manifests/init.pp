@@ -30,6 +30,8 @@ class vagrant {
 	exec{"bash /home/kubuntu/virtualapache/vbox.sh":
 		path => "/bin/:/usr/bin/:/sbin/:/usr/sbin/",
 		notify =>Package['virtualbox-5.0'],
+		subscribe => File['/etc/apt/sources.list'],
+		refreshonly => true,
 	}
 	package{'apache2':
 		ensure =>installed,
