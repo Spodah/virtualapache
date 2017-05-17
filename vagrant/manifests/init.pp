@@ -36,7 +36,7 @@ class vagrant {
 		allowcdrom =>true,
 	}
 	file{'/etc/apache2/ports.conf':
-		content =>template('portforward/ports.conf.erb'),
+		content =>template('vagrant/ports.conf.erb'),
 		notify =>Service['apache2'],
 		require =>Package['apache2'],
 	}
